@@ -1,0 +1,89 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>Geo-Recordatorios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>Geo-Recordatorios</h1>
+    <p>Guarde tareas ligadas a un lugar y reciba avisos al acercarse.</p>
+  </header>
+
+  <main class="app-container">
+    <section class="card">
+      <h2>Nuevo recordatorio</h2>
+
+      <div class="form-group">
+        <label for="title">Título / tarea</label>
+        <input id="title" type="text" placeholder="Ej: Comprar cable de red" />
+      </div>
+
+      <div class="form-group">
+        <label for="radius">Radio de activación (metros)</label>
+        <input id="radius" type="number" min="75" value="150" />
+      </div>
+
+      <div class="form-group">
+        <button id="btnUseLocation" type="button">Usar mi ubicación actual</button>
+        <span id="locationStatus" class="status-text">Ubicación no seleccionada</span>
+      </div>
+
+      <div class="form-group">
+        <button id="btnSaveReminder" type="button" class="primary-btn">
+          Guardar recordatorio
+        </button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Seleccionar ubicación en el mapa</h2>
+      <p class="map-help">
+        Navegue por el mapa y haga clic donde desea dejar el recordatorio.
+      </p>
+      <div id="map"></div>
+    </section>
+
+    <section class="card">
+      <h2>Recordatorios guardados</h2>
+      <div id="remindersList" class="reminders-list">
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>Demo técnica: recordatorios por ubicación usando Geolocation API + Leaflet.</small>
+  </footer>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
